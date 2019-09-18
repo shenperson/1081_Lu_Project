@@ -25,7 +25,7 @@ reg [1:0] state, n_state;
 // output
 reg ready;
 reg enable;
-reg [5:0] change;1
+reg [5:0] change;
 reg [1:0] drink;
 
 // combinational

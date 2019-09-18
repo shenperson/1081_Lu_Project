@@ -15,7 +15,12 @@
 `define YEL "%c[0;33m",27
 `define BLK "%c[0;m",27
 
+
+
 module testbench();
+
+  
+
 
   reg         clk, reset, enable_i;
   reg   [5:0] money_i;
@@ -53,6 +58,8 @@ module testbench();
 // -------------------------------------------------------- //
 //   Global behavior
 // -------------------------------------------------------- //
+
+
 
 always #(`CYCLE/2) clk = ~clk;
 
@@ -176,6 +183,5 @@ begin
     end
   end
 end
-
 
 endmodule

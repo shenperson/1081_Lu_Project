@@ -16,6 +16,11 @@
 `define BLK "%c[0;m",27
 
 module testbench();
+initial
+begin
+$dumpfile("out.lxt");
+$dumpvars();
+end
 
   reg         clk, reset, enable_i;
   reg   [5:0] money_i;

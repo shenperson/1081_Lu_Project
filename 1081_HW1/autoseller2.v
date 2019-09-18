@@ -15,7 +15,7 @@ assign {drinkcost[0],drinkcost[1],drinkcost[2],drinkcost[3]}  = {6'd0,6'd30,6'd2
 
 reg [5:0] money;
 reg [1:0] drinktype;
-reg [1:0] state, n_state;
+reg [1:0] state;
 
 parameter IDLE = 2'd0;
 parameter MONEY = 2'd1;
@@ -35,15 +35,15 @@ always @(posedge clk or posedge reset) begin
         drinktype <= 2'd0;
     end 
     else begin
-        state <= n_state;
+        // state <= n_state;
         case (state)
             IDLE: begin
                 money <= money_i;
                 drinktype <= drinktype_i;
                 enable_o <= 1'b0;
                 ready_o <= 1'b0;
-                if (enable_i)  n_state <= MONEY;
-                else n_state <= IDLE; 
+                if (enable_i)  state <= MONEY;
+                else state <= IDLE; 
             end
 
             MONEY: begin
@@ -53,7 +53,7 @@ always @(posedge clk or posedge reset) begin
                 // n_state <= ENOUGH;
                 // end
                 // else n_state <= NOT;
-                n_state <= (money < drinkcost[drinktype])?NOT:ENOUGH;
+                state <= (money < drinkcost[drinktype])?NOT:ENOUGH;
             end 
 
             ENOUGH: begin 
@@ -61,7 +61,7 @@ always @(posedge clk or posedge reset) begin
                 change_o <= money - drinkcost[drinktype];
                 enable_o <= 1'b1;
                 ready_o <= 1'b1;
-                n_state <= IDLE;
+                state <= IDLE;
             end
 
             NOT: begin
@@ -69,12 +69,12 @@ always @(posedge clk or posedge reset) begin
                 change_o <= money;
                 enable_o = 1'b1;
                 ready_o = 1'b1;
-                n_state = IDLE;
+                state = IDLE;
             end
 
             default: begin 
-                if (enable_i)  n_state = MONEY;
-                else n_state = IDLE; 
+                if (enable_i)  state = MONEY;
+                else state = IDLE; 
             end
         endcase
 
