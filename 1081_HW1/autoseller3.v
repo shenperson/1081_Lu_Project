@@ -77,6 +77,10 @@ always @(posedge clk or posedge reset) begin
                 end
             endcase
         end
+        else begin
+            enable_o <= 1'b0;
+            ready_o <= 1'b0;
+        end
     end
 end
 
