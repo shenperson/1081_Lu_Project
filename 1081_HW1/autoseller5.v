@@ -47,6 +47,7 @@ always @(*) begin
             change_o = (money<drinkcost[drinktype])?money:(money-drinkcost[drinktype]);
             drink_o = (money<drinkcost[drinktype])?2'b00:drinktype;
             enable = 1'b1;
+            n_state =IDLE;
         end
         default: begin 
             n_state = IDLE; 
