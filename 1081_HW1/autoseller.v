@@ -66,7 +66,7 @@ always @(*) begin
             drinktype[3]: begin
                 if (money_i>=drinkcost[3]) begin
                     drink = drinktype[3];
-                    change = money_i - drinkcost[3];
+                    change = money_i - drinkcost[3ㄣ];
                 end
                 else begin
                     drink = drinktype[0];
