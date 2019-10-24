@@ -18,7 +18,7 @@
 module testbench();
 initial
 begin
-$dumpfile("out.lxt");
+$dumpfile("out.vcd");
 $dumpvars();
 end
 

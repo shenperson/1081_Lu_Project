@@ -69,10 +69,10 @@ initial begin
 	$fsdbDumpvars();
   `endif
 
-  `ifdef VCD
+  // `ifdef VCD
     $dumpfile("autoseller.vcd");
 	$dumpvars();
-  `endif
+  // `endif
 end
 
 //
