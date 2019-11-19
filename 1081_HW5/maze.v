@@ -60,10 +60,6 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                     end
                 end
                 else begin
-                    // start_x = row_i >> 12;
-                    // start_y = row_i >> 8;
-                    // end_x = row_i >> 4;
-                    // end_y = row_i;
                     START = (row_i >> 12) * 8 + (row_i >> 8 & `MASK);
                     END = (row_i >> 4 & `MASK) * 8 + (row_i & `MASK);
                 end
@@ -72,8 +68,7 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                 n_action = (cnt == 8) ? `ACT_CAL : `ACT_INPUT;
             end
             `BFS:begin
-                n_state = `BFS;
-                for(i = 64; i!=64;i=i+1) begin
+                for(i = 0; i != 64;i = i + 1) begin
                     if(map[i]==`END) begin
                         // right
                         if(i < 56) begin
@@ -166,9 +161,6 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
             state <= n_state;
             action_o <= n_action;
             cnt <= n_cnt;
-            if(cnt==8) begin
-                $display(START," ",END);
-            end
         end
     end
 endmodule
