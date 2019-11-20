@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-`define CYCLE    10
+`define CYCLE    5
 // modify if need
 `define ENDCYCLE 1000
 
