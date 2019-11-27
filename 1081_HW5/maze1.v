@@ -83,7 +83,7 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                             if(i < 56) begin
                                 if(map[i+8] == `ROAD) begin
                                     map[i+8] <= `END;
-                                    direction[i+8] = `LEFT;
+                                    direction[i+8] <= `LEFT;
                                 end
                                 if(map[i+8] == `START) begin
                                     direction[i+8] <= `LEFT;
@@ -96,7 +96,7 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                             if(i > 7) begin
                                 if(map[i-8] == `ROAD) begin
                                     map[i-8] <= `END;
-                                    direction[i-8] = `RIGHT;
+                                    direction[i-8] <= `RIGHT;
                                 end
                                 if(map[i-8] == `START) begin
                                     direction[i-8] <= `RIGHT;
@@ -109,7 +109,7 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                             if(i[3:0] != 0) begin
                                 if(map[i-1] == `ROAD) begin
                                     map[i-1] <= `END;
-                                    direction[i-1] = `DOWN;
+                                    direction[i-1] <= `DOWN;
                                 end
                                 if(map[i-1] == `START) begin
                                     direction[i-1] <= `DOWN;
@@ -122,7 +122,7 @@ module maze(clk, reset, start_i, row_i, action_o, coord_o);
                             if(i[3:0] != 7) begin
                                 if(map[i+1] == `ROAD) begin
                                     map[i+1] <= `END;
-                                    direction[i+1] = `UP;
+                                    direction[i+1] <= `UP;
                                 end
                                 if(map[i+1] == `START) begin
                                     direction[i+1] <= `UP;
